@@ -1,0 +1,911 @@
+<DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width initial scale=1.0">
+        <title>Twitter Clone</title>
+     
+        <link rel="stylesheet" href="css/all.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+        
+        
+            <style >
+               
+                * {
+     margin: 0;
+     padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    background-color: #fff;
+    color: black;
+}
+
+a {
+    text-decoration: none;
+
+}
+img:hover, .full-name:hover, .user-name:hover {
+    cursor: pointer;
+}
+ul {
+    list-style: none;
+}
+.main-flex-container {
+    max-width: 1400px;
+    margin: auto;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+.left-flex-container {
+    flex: 1 0 22%;
+    height: 100%;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid rgb(230, 236, 240);
+  
+}
+.center-flex-container {
+    flex: 3 0 45%;
+    background: #fff;
+}
+.right-flex-container {
+    flex: 2 0 31%;
+    height: 100%;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    border-left: 1px solid rgb(230, 236, 240);
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    
+}
+.logo i {
+    color: #1da1f2;
+    font-size: 2rem;
+    padding: 1rem;
+}
+.logo i:hover {
+    border-radius: 50%;
+    padding: 1rem;
+}
+.nav-links {
+    font-weight: 500;
+    color: rgba(20, 23, 26, 0.93);
+    padding: 10px 15px;
+}
+.current-page a{ color: rgba(29, 161, 242, 1.00);}
+.nav-items:hover {
+    background: rgba(207, 203, 196, 0.87);
+    color: #000305;
+    padding: 10px 15px;
+    border-radius: 25px;
+}
+.nav-items {
+    margin: 1.2rem 2rem;
+    white-space: nowrap;
+
+}
+.nav-links i {
+    padding-right: 0.5rem;
+}
+.nav-links {
+    margin-top: -1rem;
+}
+.dark-mode {
+    background: black;
+    color: white;
+}
+.tweet a {
+    display: block;
+    margin: auto;
+    width: 50%;
+    color: #fff;
+    background: #1da1f2;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 10px 5rem;
+    border-radius: 25px;
+ 
+}
+.tweet a:hover {
+    color: #fff;
+    background: #198ed6;
+}
+.profile-box {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem;
+    align-self: center;
+    padding: 0 0.15rem;
+    padding-left: -30px;
+}
+.profile-box:hover {
+    background: rgba(29, 161, 242, 0.1);
+    border-radius: 25px;
+    cursor: pointer;
+}
+.profile-box img {
+    display: block;
+    width: 45px;
+    height: 45px;
+    margin: auto;
+    border-radius: 100%;
+    margin-right: 0.5em;
+}
+.profile-box .full-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+.profile-box .options-icon {
+    color: #39393a;
+    margin-left: 1rem;
+}
+
+
+.user-name {
+    color: #39393a;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.1rem;
+}
+.home {
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    border-bottom: 1px solid rgb(230, 236, 240);
+    color: #39393a;
+    padding: 0.5rem 1rem;
+}
+.home h1 {
+    font-size: 1.4rem;
+    color: rgba(29, 161, 242, 1.00);
+    background: #fff;
+    padding: 0.5rem;
+    border-radius: 50%;
+}
+.home i:hover {
+    background: rgba(29, 161, 242, 0.1);
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.post-tweet {
+    background: #fff;
+    border-bottom: 10px solid rgb(230, 236, 240);
+}
+.form-group {
+    display: flex;
+    flex-flow: row;
+    padding: 0.3rem 1rem;
+}
+.post-tweet img {
+    display: inline-block;
+    margin-right: 5px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    align-self: center;
+}
+.post-tweet input {
+    width: 90%;
+    height: 60px;
+    padding: 0.5rem 1rem;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+.post-tweet input::placeholder {
+    color: rgba(123, 124, 126, 0.719);
+}
+.post-tweet input:focus {
+    outline: none;
+}
+.form-group-2 {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.8rem;
+}
+.post-icons {
+    padding-left: 4rem;
+    color: #1da1f2;
+}
+.post-icons i {
+    padding-right: 10px;
+    font-size: 1.4rem;
+}
+.post-icons i:hover {
+    color: #1da0f2c2;
+    cursor: pointer;
+}
+.form-group-2 .btn {
+    border: none;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.7rem 1rem;
+    background: #8ed0f9;
+    color: #fff;
+    border-radius: 25px;
+    margin-right: 1rem;
+}
+.form-group-2 .btn:hover {
+    background: #1da1f2;
+    cursor: pointer;
+}
+.btn:focus {
+    outline: none;
+}
+.tweets img {
+    display: block;
+    width: 100%;
+}
+.tweets .user-pics img {
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 0.5rem 1rem;
+}
+.tweets {
+    display: flex;
+    flex-flow: row;
+   
+    font-size: 15px;
+    width: 100%;
+    line-height: 1.75rem;
+    padding-top: 0.5rem;
+    border-bottom: 1px solid rgb(230, 236, 240);
+}
+.tweets:hover {
+    background: rgb(245, 248, 250);
+}
+.full-name:hover {
+    background: rgb(245, 248, 250);
+}
+.user-content img {
+    border-radius: 20px;
+    height: 35rem;
+    width: 27rem;
+
+}
+.user-content {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-right: 1rem;
+    color: rgb(48, 52, 56);
+    font-weight: 100;
+    line-height: 1.5;
+}
+.user-content a {
+    color: rgb(27, 149, 224);
+}
+.user-content-box {
+    display: flex;
+    flex-flow: column nowrap;
+    color: rgb(20, 23, 26);
+}
+.user-content-box .user-names {
+    display: flex;
+    flex-flow: row nowrap;
+}
+.user-names .full-name {
+    padding-right: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: rgb(20, 23, 26);
+}
+.user-names .user-name {
+    padding-right: 10px;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: rgb(101, 119, 134);
+}
+.content-icons {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1rem 4rem 1rem 0;
+}
+.content-icons i {
+    color: rgb(101, 119, 134);
+    font-size: 1rem;
+    cursor: pointer;
+}
+.content-icons i:last-child {
+    font-size: 14px;
+}
+.content-icons .blue:hover {
+    color: rgba(29, 161, 242, 1.00);
+}
+.content-icons .green:hover {
+    color: rgb(23, 191, 99);
+}
+.content-icons .red:hover {
+    color: rgb(224, 36, 94);
+}
+.content-icons .blue:hover {
+    color: rgba(29, 161, 242, 1.00);
+}
+.follow-users-box {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    font-size: 15px;
+    width: 100%;
+    line-height: 1.5rem;
+}
+.related-followers .sub-text {
+    font-size: 14px;
+    padding-left: 2.1rem;
+}
+.related-followers i {
+    font-size: 0.7rem;
+    padding-right: 8px;
+}
+.follow-header .main-text {
+    font-size: 17px;
+    font-weight: 800;
+}
+.main-text {
+    font-size: 25px;
+}
+.full-name h1:hover {
+    text-decoration: underline;
+}
+
+.user-name .sub-text {
+    font-size: 17px;
+    color: rgb(101, 119, 134);
+}
+.follow-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid rgb(230, 236, 240);
+    border-top: 10px solid rgb(230, 236, 240);
+}
+.follow-header i {
+    font-size: 13px;
+    align-self: center;
+    cursor: pointer;
+}
+.user-profile img {
+    display: inline-block;
+    margin-right: 5px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    align-items: center;
+}
+.follow-user {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 0.4rem 1rem;
+    border-bottom: 1px solid rgb(230, 236, 240);
+}
+.follow-user:hover {
+    background: rgb(245, 248, 250);
+}
+.user-profile {
+    display: flex;
+    flex-flow: row nowrap;
+}
+.user-profile-content {
+    width: 100%;
+    padding-bottom: 0.3rem;
+}
+.title-container {
+    display: flex;
+    justify-content: space-between;
+}
+.bio-container {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.bio-container a:hover, .user-content a:hover {
+    text-decoration: underline;
+}
+.follow-btn a{
+    font-weight: bold;
+    color: rgb(29, 161, 242);
+    background: #fff;
+    padding: 0.3rem 1.1rem;
+    border: 1px solid rgba(29, 161, 242, 0.1);
+    border-radius: 25px;
+}
+.follow-btn a:hover {
+    background: rgba(29, 161, 242, 0.1);
+}
+.follow-footer {
+    padding: 1rem;
+    background: #fff;
+    border-bottom: 1px solid rgb(230, 236, 240);
+}
+.follow-footer a {
+    color: rgb(29, 161, 242);
+    font-size: 15px;
+    font-weight: 400;
+}
+.follow-footer:hover {
+    background: rgba(0, 0, 0, 0.03);
+}
+.search-box {
+    border: none;
+    border-radius: 25px;
+    padding: 0.1rem 1rem;
+    background: rgb(230, 236, 240);
+    margin-top: 0.5rem;
+    white-space: nowrap;
+}
+.search-box i {
+    color: rgb(101, 119, 134);
+    font-size: 0.9rem;
+}
+.search-box input {
+    padding: 0.8rem 8rem 0.8rem 0.2rem;
+    border-radius: 25px;
+    outline: none;
+    border: none;
+    font-size: 0.9rem;
+    background: rgb(230, 236, 240);
+}
+.nav-list {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid rgb(230, 236, 240);
+}
+.nav-list:hover {
+    background: rgba(0, 0, 0, 0.03);
+    cursor: pointer;
+}
+.nav-list a {
+    color: rgb(27, 149, 224);
+}
+.nav-list:last-child {
+    font-size: 1rem;
+    border-bottom: none;
+}
+.trend-list {
+    display: flex;
+    flex-flow: column nowrap;
+}
+.trends {
+    background: rgb(245, 248, 250);
+    display: flex;
+    flex-flow: column nowrap;
+    width: 80%;
+    border-radius: 15px;
+    margin-top: 1rem;
+}
+.trends-header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid rgb(230, 236, 240);
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid rgb(230, 236, 240);
+}
+.header h2 {
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+.header i {
+    color: rgba(29, 161, 242, 1.00);
+    background: rgb(245, 248, 250);
+    padding: 0.5rem;
+    border-radius: 50%;
+} 
+.header i:hover {
+    background: rgba(29, 161, 242, 0.1);
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.main-text {
+    font-size: 15px;
+    font-weight: bold;
+    color: rgb(20, 23, 26);
+}
+.sub-text {
+    font-size: 13px;
+    color: rgb(101, 119, 134);
+}
+.nav-list .trend-icon {
+    font-size: 13px;
+    color: rgb(101, 119, 134);
+}
+.right-footer {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+.footer-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-top: 0.5rem;
+}
+.footer-links a:hover {
+    text-decoration: underline;
+}
+.footer-links i {
+    padding: 0.4rem;
+    border-radius: 50%;
+}
+.footer-links i:hover {
+    background: rgb(245, 248, 250);
+    padding: 0.4rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.footer-copyright {
+    align-self: flex-start;
+}
+label {
+    position: absolute;
+    width: 45px;
+    height: 22px;
+    right: 20px;
+    top: 20px;
+    border: 2px solid;
+    border-radius: 20px;
+}
+label::before {
+    position: absolute;
+    content: "";
+    width: 20px;
+    height: 20px;
+    left: 1px;
+    top: 0px;
+   cursor: pointer;
+    border-radius: 50%;
+    transition: 0.4s;
+    background: #000;
+}
+label.active::before {
+    left: 24px;
+    background: #fff;
+}
+body.night {
+    background: #000;
+    color: #fff;
+}
+            </style>
+    </head>
+    <body>
+        <div class="main-flex-container">
+            <div class="left-flex-container flex-item">
+                <div class="nav-links">
+                    <ul>
+                        <li class="nav-items logo"><a href="#"><i class="bi bi-twitter"></i></a></li>
+                        <li class="nav-items current-page"><a href="#" style="color: #000;"><b><i class="bi bi-house-door"></i></b>Home</a></li>
+                        <li class="nav-items"><a href="#" style="color: #000;"> <i class="bi bi-hash"></i></i>Explore</a></li>
+                        <li class="nav-items"><a href="#"style="color: #000;"><i class="bi bi-bell"></i>Notification</a></li>
+                        <li class="nav-items"><a href="#" style="color: #000;"><i class="bi bi-envelope"></i>Message</a></li>
+                        <li class="nav-items"><a href="#" style="color: #000;"><i class="bi bi-bookmark"></i>Bookmark</a></li>
+                        <li class="nav-items"><a href="#"style="color: #000;"><i class="bi bi-list"></i>Lists</a></li>
+                        <li class="nav-items"><a href="#"style="color: #000;"><i class="bi bi-person"></i>Profile</a></li>
+                        <li class="nav-items"><a href="#"style="color: #000;"><i class="bi bi-three-dots"></i>More</a></li>
+                       
+                    </ul>
+                    <script>
+                      
+                    </script>
+                </div>
+                <div class="tweet"><a href="#">Tweet</a></div>
+                <div class="profile-box">
+                    <img src="./img/profile.jpeg" alt="profile">
+                    <div class="profile-link">
+                        <p class="full-name">Black King<i class="bi bi-patch-check-fill"></i> <br> @Khriiz_riiz</p>
+                     
+                    </div>
+                    <div class="options-icon"><i class="bi bi-caret-down"></i></div>
+                </div>
+            </div>
+            <div class="center-flex-container flex-item">
+                <div class="home">
+                    <h1> Home</h1>
+                    <i class="bi bi-magic"></i>
+                </div>
+                <div class="post-tweet">
+                    <form action="">
+                        <div class="form-group-1">
+                            <img src="./img/profile.jpeg" alt="profile-pics">
+                            <input type="text" placeholder="What's happening?">
+                        </div>
+                        <div class="form-group-2">
+                            <div class="post-icons">
+                                <i class="bi bi-images"></i>
+                                <i class="bi bi-file-image"></i>
+                                <i class="bi bi-cast"></i>
+                                <i class="bi bi-emoji-smile"></i>
+                                <i class="bi bi-calendar-check"></i>
+                            </div>
+                            <button class="btn" type="submit">Tweet</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="tweets">
+                    <div class="user-pics"><img src="https://pbs.twimg.com/profile_images/1598928150754430978/QzFpA28W_400x400.jpg"></div>
+                        <div class="user-content-box">
+                            <div class="user-names">
+                                <h1 class="full-name">Shashi Lo<i class="bi bi-patch-check-fill"></i></h1>
+                                <p class="user-name">@shashiwhocodes</p>
+                                <p class="time"> . 32mins</p>
+                            </div>
+                            <div class="user-content">
+                                <p>You are who you hangout with. Find the right developer community to <br> join and start leveling up!</p>
+                            </div>
+                            <div class="content-icons">
+                                <i class="fa-regular fa-comment blue">214</i>
+                                <i class="fa-solid fa-retweet green">675</i>
+                                <i class="fa-solid fa-heart red">2.5k</i>
+                                <i class="fa-sharp fa-solid fa-badge-check"></i>
+                               
+                             
+                                <i class="fa-solid fa-arrow-up-from-bracket blue"></i>
+                            </div>
+                        </div>
+                    </div>
+                  
+                    <div class="tweets">
+                        <div class="user-pics"><img src="https://pbs.twimg.com/profile_images/1590968738358079488/IY9Gx6Ok_400x400.jpg" alt="user2"></div>
+                        <div class="user-content-box">
+                            <div class="user-names">
+                                <h1 class="full-name">Elon Musk<i class="bi bi-patch-check-fill"></i></h1>
+                                <p class="user-name">@elonmusk</p><i class="fa-sharp fa-solid fa-badge-check"></i>
+                                <p class="time"> .Feb 26</p>
+                            </div>
+                            <div class="user-content">
+                                <p>Rewatching Step Brothers....So Good</p>
+                            </div>
+                            <div class="content-icons">
+                                <i class="fa-regular fa-comment blue">15k</i>
+                                <i class="fa-solid fa-retweet green">2k</i>
+                                <i class="fa-solid fa-heart red">1m</i>
+                           
+                                <i class="fa-solid fa-arrow-up-from-bracket blue"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tweets">
+                        <div class="user-pics"><img src="https://pbs.twimg.com/profile_images/1585789801655066624/m_d8v6TR_400x400.jpg"></div>
+                        <div class="user-content-box">
+                            <div class="user-names">
+                                <h1 class="full-name">HayJay Lion<i class="bi bi-patch-check-fill"></i></h1>
+                                <p class="user-name">@adeolajames</p>
+                                <p class="time"> . Jan 3</p>
+                            </div>
+
+                            <div class="user-content">
+                                <p> Happy Sunday...<i class="fa-solid fa-face-smile"></i></p>
+                                <img src="./img/user7.jpeg" alt="birthday">
+                            </div>
+                            <div class="content-icons">
+                                <i class="fa-regular fa-comment blue">700</i><br><br><br>
+                                <i class="fa-solid fa-retweet green">112</i>
+                                <i class="fa-solid fa-heart red">3k</i>
+                           
+                                <i class="fa-solid fa-arrow-up-from-bracket blue"></i>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tweets">
+                        <div class="user-pics"><img src="./img/profile.jpeg"></div>
+                        <div class="user-content-box">
+                            <div class="user-names">
+                                <h1 class="full-name">Black King<i class="bi bi-patch-check-fill"></i></h1>
+                                <p class="user-name">@Khriiz_riiz</p>
+                                <p class="time"> . Feb 20</p>
+                            </div>
+
+                            <div class="user-content">
+                                <p> I am cloning twitter next....watchout!! <a href="#">#elonmusk, #twitter, #Tech</a></p>
+                            
+                            </div>
+                            <div class="content-icons">
+                                <i class="fa-regular fa-comment blue">112</i><br><br><br>
+                                <i class="fa-solid fa-retweet green">52</i>
+                                <i class="fa-solid fa-heart red">3,046</i>
+                           
+                                <i class="fa-solid fa-arrow-up-from-bracket blue"></i>
+                                <i class="fa-thin fa-chart-simple"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <section class="follow-users-box">
+                        <div class="follow-header">
+                            <h1 class="main-text">Who to follow </h1>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="follow-user">
+                            <div class="related-followers">
+                                <p class="sub-text"><i class="fa-solid fa-user"></i>TOBY,Glory Olaifa and 20 others follow</p>
+                            </div>
+                            <div class="user-profile">
+                                <div class="user-pics"><img src="https://pbs.twimg.com/profile_images/1586108217569992717/mPVuI93V_400x400.jpg"></div>
+                            </div>
+                            <div class="user-profile-content">
+                                <div class="title-container">
+                                    <div class="user-names">
+                                        <div class="full-name"><h1 class="main-text">Samson Goddy</h1></div>
+                                            <div class="user-name"><p class="sub-text">@Samson_Goddy</p></div>
+        
+                                            
+                                      
+                                    </div>
+                                    <div class="follow-btn"><a href="#">Follow</a></div>
+                                </div>
+                                <div class="bio-container">
+                                    <p > #opinions are mine</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="follow-user">
+                            <div class="related-followers">
+                                <p class="sub-text"><i class="fa-solid fa-user"></i>Agba Akin, David Herbert and 20 others follow</p>
+                            </div>
+                            <div class="user-profile">
+                                <div class="user-pics"><img src="https://pbs.twimg.com/profile_images/1451624172266868739/lpi5wPb4_400x400.jpg"></div>
+                            </div>
+                            <div class="user-profile-content">
+                                <div class="title-container">
+                                    <div class="user-names">
+                                        <div class="full-name"><h1 class="main-text">HackSultan<i class="bi bi-patch-check-fill"></i></h1></div>
+                                            <div class="user-name"><p class="sub-text">@hackSultan</p></div>
+        
+                                            
+                                      
+                                    </div>
+                                    <div class="follow-btn"><a href="#">Follow</a></div>
+                                </div>
+                             
+                            </div>
+                        </div>
+                        <div class="follow-footer">
+                            <a href="#">Show More</a>
+                        </div>
+                        </section>
+                        <div class="tweets">
+                            <div class="user-pics"><img src="https://pbs.twimg.com/profile_images/1288033286892158976/N_r0FGxy_400x400.jpg"></div>
+                            <div class="user-content-box">
+                                <div class="user-names">
+                                    <h1 class="full-name">B.O.D<i class="bi bi-patch-check-fill"></i></h1>
+                                    <p class="user-name">@bod_republic</p>
+                                    <p class="time"> . Feb 17</p>
+                                </div>
+    
+                                <div class="user-content">
+                                    <p> "You post alot" <br> What am i supposed to do here? Cook rice?</p>
+                                
+                                </div>
+                                <div class="content-icons">
+                                    <i class="fa-regular fa-comment blue" >370</i><br><br><br>
+                                    <i class="fa-solid fa-retweet green">555</i>
+                                    <i class="fa-solid fa-heart red">4,837</i>
+                               
+                                    <i class="fa-solid fa-arrow-up-from-bracket blue"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pagnation">
+                            <a href="#">Load more</a>
+                        </div>
+                        
+                            
+                        
+                   
+
+           
+
+            </div> 
+            <div class="right-flex-container flex-item">
+                <div class="search-box">
+                    <i class="bi bi-search"></i>
+                    <input type="text" placeholder="Search Twitter">
+                </div>
+                <div class="trends">
+                    <ul>
+                        <li class="nav-list header">
+                            <h2>Trends for you</h2>
+                            <i class="bi bi-gear-wide-connected"></i>
+                            </li>
+                            <li class="nav-list">
+                                <div class="trend-list">
+                                    <p class="sub-text">#Trending in Naija</p>
+                                    <p class="main-text">#ASUU</p>
+                                    <P class="sub-text">312k Tweets</P>
+                                </div>
+                                <div class="trend-icon">
+                                    <i class="fa-solid fa-chevron-down"></i>
+
+                                </div>
+                            </li>
+                            <li class="nav-list">
+                                <div class="trend-list">
+                                    <p class="sub-text">#Trending in Naija</p>
+                                    <p class="main-text">#obidatti</p>
+                                    <P class="sub-text">232k Tweets</P>
+                                </div>
+                                <div class="trend-icon">
+                                    <i class="fa-solid fa-chevron-down"></i>
+
+                                </div>
+                            </li>
+                            <li class="nav-list">
+                                <div class="trend-list">
+                                    <p class="sub-text">#Trending in Naija</p>
+                                    <p class="main-text">#Love, Damini</p>
+                                    <P class="sub-text">112k Tweets</P>
+                                </div>
+                                <div class="trend-icon">
+                                    <i class="fa-solid fa-chevron-down"></i>
+
+                                </div>
+                            </li>
+                            <li class="nav-list">
+                                <div class="trend-list">
+                                    <p class="sub-text">#Trending in Naija</p>
+                                    <p class="main-text">#Grammy</p>
+                                    <P class="sub-text">92k Tweets</P>
+                                </div>
+                                <div class="trend-icon">
+                                    <i class="fa-solid fa-chevron-down"></i>
+
+                                </div>
+                            </li>
+                            <li class="nav-list">
+                                <div class="trend-list">
+                                    <p class="sub-text">#Trending in Naija</p>
+                                    <p class="main-text">#Chelsea</p>
+                                    <P class="sub-text">312k Tweets</P>
+                                </div>
+                                <div class="trend-icon">
+                                    <i class="fa-solid fa-chevron-down"></i>
+
+                                </div>
+                            </li>
+                            <li class="nav-list"><a href="#">Show more</a></li>
+                    </ul>
+                </div>
+                <div class="right-footer">
+                    <div class="footer-links">
+                        <a href="#" class="sub-text">Terms</a>
+                        <a href="#" class="sub-text">Privacy policy</a>
+                        <a href="#" class="sub-text">Ads info</a>
+                        <a href="#" class="sub-text">more</a>
+                        <i class="fa-solid fa-chevron-down sub text"></i>
+                    </div>
+                    <div class="footer-copyright">
+                        <p class="sub-text">&copy; 2023 Twitter, Inc</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </body>
+    </html>
